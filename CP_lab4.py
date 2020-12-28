@@ -10,15 +10,15 @@ z = 20  # number of rounds
 res = []
 for i in range(1, z + 1):
     print('--------------------')
-    print('Раунд ', i)
-    # доказывающий:
+    print('Round ', i)
+    # prover:
     k = random.randint(1, n - 1)
     u = (k**2) % n
     print('The prover sends a fixator to the verifier: ', format(u, 'x'))
-    # проверяющий:
+    # verifier:
     r = random.randint(0, 1)
     print('Verifier sent r =', r)
-    # доказывающий:
+    # prover:
     w = (k * (s**r)) % n
     k = 0
     print('Prover sends'
