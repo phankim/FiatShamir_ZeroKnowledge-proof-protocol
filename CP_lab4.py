@@ -46,20 +46,7 @@ def fast_pow(a, w, n):
             c = mod(c*c,n)
     return s
 
-def getPrimeFactors(n):
-    prime_factor=[]
-    while n%2==0:
-        prime_factor.append(2)
-        n=n/2
-    for i in range(3, int(math.sqrt(n))+1,2):
-        while n%i==0:
-            prime_factor.append(int(i))
-            n=n/i
-    if n>2:
-        prime_factor.append(int(n))
-    return prime_factor
-
-len = int(input("Введите биты длины простых p, q -> "))
+len = int(input("Enter length bits of p, q -> "))
 l_s=int(len/12.8)
 s_p=random.randint((2**l_s)/2,(2**l_s)-1)
 s_q=random.randint((2**l_s)/2,(2**l_s)-1)
@@ -81,6 +68,7 @@ while not MillerRabin(q):
     i+=1
 print ("p=",p)
 print("q=",q)
+
 
 n = p * q
 s = random.randint(1, n - 1)  # private key
