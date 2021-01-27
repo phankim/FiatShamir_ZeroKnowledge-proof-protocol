@@ -58,22 +58,29 @@ def getPrimeFactors(n):
     if n>2:
         prime_factor.append(int(n))
     return prime_factor
-l_p = int(input("Enter length bits of prime p -> "))
-l_q=int(l_p/12.8)
-q=random.randint((2**l_q)/2,(2**l_q)-1)
-while not MillerRabin(q):
-    q=random.randint((2**l_q)/2,(2**l_q)-1)
+
+len = int(input("Введите биты длины простых p, q -> "))
+l_s=int(len/12.8)
+s_p=random.randint((2**l_s)/2,(2**l_s)-1)
+s_q=random.randint((2**l_s)/2,(2**l_s)-1)
+while not MillerRabin(s_p) :
+    s_p=random.randint((2**l_s)/2,(2**l_s)-1)
 i=1
 p=4
-dif =int(l_p-l_q)
-while not MillerRabin(p): #p=2*r*q+1
-    p=q*2
-    r=random.randint((2**dif)//2,(2**dif)-1) #r- нечетное число 
-    p=int(p*r)+1
+q=4
+dif =int(len-l_s)
+while not MillerRabin(p) : #
+    p=s_p*2
+    r_p=random.randint((2**dif)//2,(2**dif)-1) #r- нечетное число 
+    p=int(p*r_p)+1 # p-1=2*s*r_p
+    i+=1
+while not MillerRabin(q):
+    q=s_q*2
+    r_q=random.randint((2**dif)//2,(2**dif)-1) #r- нечетное число 
+    q=int(q*r_q)+1 # q-1=2*s*r_q
     i+=1
 print ("p=",p)
 print("q=",q)
-
 
 n = p * q
 s = random.randint(1, n - 1)  # private key
